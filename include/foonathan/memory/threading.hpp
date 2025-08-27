@@ -79,6 +79,11 @@ namespace foonathan
                     mutex_.unlock();
                 }
 
+                Mutex * operator->() const noexcept
+                {
+                    return std::addressof(mutex_);
+                }
+
             protected:
                 ~mutex_storage() noexcept = default;
 
@@ -94,6 +99,11 @@ namespace foonathan
 
                 void lock() const noexcept {}
                 void unlock() const noexcept {}
+
+                mutex_storage const * operator->() const noexcept
+                {
+                    return this;
+                }
 
             protected:
                 ~mutex_storage() noexcept = default;
