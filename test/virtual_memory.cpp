@@ -12,9 +12,10 @@ namespace
 
     using namespace foonathan::memory;
 
+    static void* pages = virtual_memory_reserve(10);
+
     TEST_CASE("can use virtual_memory during static initialization")
     {
-        static void* pages = virtual_memory_reserve(10);
         REQUIRE(pages != nullptr);
 
         virtual_memory_release(pages, 10);
