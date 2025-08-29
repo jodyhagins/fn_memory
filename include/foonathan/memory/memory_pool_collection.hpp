@@ -442,7 +442,7 @@ namespace foonathan
             {
                 // node and array already checked
                 auto const aligned_size =
-                    count * detail::round_up_to_multiple_of_alignment(size, alignment);
+                    detail::round_up_to_multiple_of_alignment(size, alignment);
                 detail::check_allocation_size<bad_alignment>(
                     aligned_size, [&] { return state.max_node_size(); }, state.info());
                 auto mem = state.allocate_array(count, size);
