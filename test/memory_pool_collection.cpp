@@ -36,7 +36,9 @@ TEST_CASE("memory_pool_collection")
             for (auto i = 0u; i != 5u; ++i)
             {
                 a.push_back(pool.allocate_node(1));
+                a.push_back(allocator_traits<pools>::allocate_node(pool, 1, 8u));
                 b.push_back(pool.try_allocate_node(5));
+                a.push_back(allocator_traits<pools>::allocate_node(pool, 5, 8u));
                 REQUIRE(b.back());
             }
             REQUIRE(alloc.no_allocated() == 1u);
